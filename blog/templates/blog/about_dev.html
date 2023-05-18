@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+
+{{ title }}
+
+{% endblock title %}
+{% block main %}
+<div class="container mt-4, mb-4" >
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+
+{% for developer in developers %}
+
+
+  <div class="col">
+    <div class="card">
+      <img src="{{ developer.get_photo }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h6 class="card-title">User name: {{ developer.user }}</h6>
+        <h5 class="card-title">Full name: {{ developer.full_name }}</h5>
+         <h6 class="card-title">Job: {{ developer.job }}</h6>
+        <h6 class="card-title">Phone number: {{ developer.phone }}</h6>
+        <h6 class="card-title">Email: {{ developer.email }}</h6>
+        <h6 class="card-title">Address: {{ developer.address }}</h6>
+        <h6 class="card-title">Date_Created: {{ developer.date_created }}</h6>
+        <p class="card-text" style="opacity:0.9;">BIO: {{ developer.bio }}</p>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+</div>
+
+</div>
+{% endblock main %}

@@ -1,0 +1,125 @@
+{% load static %}
+{% load socialaccount %}
+{% load account %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" xmlns:social="http://www.w3.org/1999/xhtml">
+    <!-- Container wrapper -->
+    <div class="container">
+        <!-- Navbar brand -->
+<a class="navbar-brand me-2" href="https://ak.picdn.net/shutterstock/videos/21937009/thumb/1.jpg">
+
+            <img
+                    src="{% static 'blog/images/darkredglobe.jpg' %}"
+                    height="20"
+                    style="margin-left:10px; border-radius:50%;width:30px; height:30px;"
+            />
+        </a>
+
+        <!-- Toggle button -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample"
+                aria-controls="navbarButtonsExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+            <!-- Left links -->
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+
+                    <a class="nav-link text-warning" href="{% url 'index' %}" style=" font-weight:bold;margin-left:0;">World<span
+                            class="text-danger">News</span></a>
+                </li>
+
+            </ul>
+            <div class="collapse navbar-collapse" id="navbarButtonsExample1">
+
+                <ul class="navbar-nav justify-content-end flex-grow0 pe-3">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false" style=" font-weight:bold;">
+                            Registration
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark"
+                            style="font-weight:bold;color:blue; text-align:center;">
+                            <li class="nav-item">
+
+                <a class="nav-link" aria-current="page" style="color:#edc81a" href="{% url 'login' %}">
+                    Login
+                </a>
+
+                </li>
+
+                            <li><a class="dropdown-item" href="{% url 'register' %}">Sign up</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% provider_login_url 'google' %}">Sign up with Google</a></li>
+                             <li><a class="dropdown-item" href="{% provider_login_url 'facebook' %}">Sign up with Facebook</a></li>
+                            <li><a class="dropdown-item" href="{% provider_login_url  'github' %}">Sign up with Git Hub</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                             <li><a class="dropdown-item" href="{% url 'about_dev' %}">About Developers</a></li>
+                            <a href="{% url 'contact' %}"> <button type="button" class="btn btn-outline-warning mb-2 mt-2"
+                                    style="color:white; font-weight:bold;">
+                                Contact us </button> </a>
+
+
+                        </ul>
+                </ul>
+            </div>
+
+
+            <form method="get" action="{% url 'search' %}" class="d-flex mt-2" role="search">
+                <input name="q" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-warning" type="submit" style="color:white; font-weight:bold">Search
+                </button>
+            </form>
+            <!-- Left links -->
+
+            <div class="d-flex align-items-center">
+
+
+
+                <ul class="navbar-nav justify-content-end flex-grow0 pe-3">
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false" style=" font-weight:bold;">
+                           WELCOME!  {{request.user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark"
+                            style="font-weight:bold;color:blue; text-align:center;">
+                            <li><a class="dropdown-item" href="{% url 'my_page' %}">My page</a></li>
+                            <li><a class="dropdown-item" href="{% url 'add_article' %}">Add Article</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <button class="btn btn-outline-warning">
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+                            </button>
+                        </ul>
+                        {% else %}
+                        {% endif %}
+                </ul>
+
+
+            </div>
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+
+<!-- Navbar-->
